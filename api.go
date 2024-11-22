@@ -35,7 +35,7 @@ func spellcheck(w http.ResponseWriter, r *http.Request, requestID string) {
     http.Error(w, `{"error": "Invalid or missing 'word' parameter"}`, http.StatusBadRequest)
   } else {
 
-		cmd := exec.Command("./checker.exe", word, requestID)
+		cmd := exec.Command("./checker.exe", word)
 		var out bytes.Buffer
 		cmd.Stdout = &out
 
