@@ -83,7 +83,7 @@ int main(int argc, char** argv) {
     vector<block> output = grabClosest(t);
 
     for (int i = 0; i < 10; i++) {
-      cout << output[i].word << " " << output[i].val << endl;
+      cout << output[i].word << endl;
     }
     
     return 0;
