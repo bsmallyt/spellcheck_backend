@@ -58,8 +58,10 @@ vector<block> grabClosest(string word) {
     
     for (int i = 0; i < 10; i++) {
       if (word_list[i].val > temp_val || word_list[i].val < 0) {
-        word_list[i].val = temp_val;
-        word_list[i].word = dict_word;
+        for (int j = 9; j > i; j--) {
+          word_list[j] = word_list[j-1];
+        }
+        word_list[i] = {dict_word, temp_val};
         break;
       }
     }
@@ -70,7 +72,7 @@ vector<block> grabClosest(string word) {
 }
 
 int main(int argc, char** argv) {
-  if (argc < 3) {
+  if (argc < 2) {
     cerr << "Error: no input provided" << endl;
     return 1;
   } else {
@@ -81,7 +83,7 @@ int main(int argc, char** argv) {
     vector<block> output = grabClosest(t);
 
     for (int i = 0; i < 10; i++) {
-      cout << output[i].word << endl;
+      cout << output[i].word << " " << output[i].val << endl;
     }
     
     return 0;
